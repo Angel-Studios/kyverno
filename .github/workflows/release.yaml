@@ -47,7 +47,7 @@ jobs:
       registry_password: ${{ secrets.CR_PAT }}
   
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs:
       - release-init-kyverno
       - release-kyverno
@@ -95,7 +95,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release-cli-via-krew:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs: 
     - create-release
     steps:

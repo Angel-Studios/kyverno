@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   helm-tests:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     steps:
       - name: Checkout
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2.4.0
@@ -30,7 +30,7 @@ jobs:
         run: ct lint --target-branch=main --check-version-increment=false
 
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs: helm-tests
     steps:
       - name: Checkout

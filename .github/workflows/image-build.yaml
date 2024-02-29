@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   pre-checks:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     steps:
       - name: Checkout
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2.4.0
@@ -61,7 +61,7 @@ jobs:
           make unused-package-check
 
   build-init-kyverno:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs: pre-checks
     steps:
       - name: Checkout
@@ -94,7 +94,7 @@ jobs:
           make docker-build-initContainer
 
   build-kyverno:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs: pre-checks
     steps:
       - name: Checkout
@@ -137,7 +137,7 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
   build-kyverno-cli:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, amd-runners]
     needs: pre-checks
     steps:
       - name: Checkout
